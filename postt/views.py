@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, get_object_or_404, HttpRespon
 from .models import postt
 from .forms import PostForm
 from django.contrib import messages
-
+from Tkinter import *
 
 
 def post_index(request):
@@ -67,7 +67,7 @@ def post_update(request, id):
 def post_delete(request, id):
     post = get_object_or_404(postt, id=id)
     post.delete()
-    messages.success(request,  'postunuz başarıyla silindi')
+    messages.success(request,  f"postunuz başarıyla silindi ")
     return redirect('post:index')
 
     return HttpResponse('burasi post delete sayfasi')
