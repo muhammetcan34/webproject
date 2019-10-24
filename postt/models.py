@@ -16,8 +16,14 @@ class postt(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse('post:detail', self.title)
+    def get_create_url(self):
+        return reverse('post:create')
+
+    def get_update_url(self):
+        return reverse('post:update', self.title)
+
+    def get_delete_url(self):
+        return reverse('post:delete', self.title)
 
 
 
