@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, get_object_or_404, HttpRespon
 from .models import postt
 from .forms import PostForm
 from django.contrib import messages
-from Tkinter import *
+
 
 
 def post_index(request):
