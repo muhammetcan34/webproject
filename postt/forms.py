@@ -1,4 +1,4 @@
-from .models import postt
+from .models import postt, comment
 from django import forms
 
 class PostForm(forms.ModelForm):
@@ -8,4 +8,15 @@ class PostForm(forms.ModelForm):
         fields = [
             'title',
             'content',
+            'image',
+
         ]
+
+class commentform(forms.ModelForm):
+    class Meta:
+        model = comment
+        fields = [
+            'name',
+            'content',
+        ]
+
