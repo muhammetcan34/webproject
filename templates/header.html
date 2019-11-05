@@ -13,7 +13,7 @@
             </button>
 
             <!-- İsim Soyisim veya Marka İsmi -->
-            <a href="#" class="navbar-brand">GİYBET</a>
+            <a href="{% url 'home:home' %}" class="navbar-brand">GİYBET</a>
         </div>
 
         <nav class="collapse navbar-collapse" role="navigation">
@@ -33,10 +33,10 @@
                     {% if request.user.is_authenticated %}
                     <li><a href="{% url 'post:create' %}">YAZI EKLE</a></li>
                 {% endif %}
-                <li><a href="home">Anasayfa</a></li>
+                <li><a href="{% url 'home:home' %}">Anasayfa</a></li>
                 <li><a href="{% url 'post:index' %}">Blog</a></li>
-                <li><a href="#">Hakkımda</a></li>
-                <li><a href="#">İletişim</a></li>
+          <!--  <li><a href="#">Hakkımda</a></li>
+                <li><a href="#">İletişim</a></li>  -->
 
                 {% if not request.user.is_authenticated %}
 

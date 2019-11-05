@@ -27,13 +27,12 @@ from django.conf import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    url(r'^$', home_view),
+    #url(r'^$', home_view),
+    url(r'^home/', include('home.urls')),
 
     url(r'^post/', include('postt.urls')),
 
     url(r'^accounts/', include('accounts.urls')),
-
-
 
 ]
 

@@ -22,6 +22,17 @@
                               {% endif %}
                   </div>
                 </div>
+              <br><br><hr>
+              <h3>yorum ekle:</h3>
+              {% include 'post/comment.html' %}
+              <hr>
+
+              {% for comment in post.comments.all  %}
+
+                  <h4>{{ comment.name }} | <small>{{ comment.created_date|timesince }} önce</small></h4>
+                  <p>{{ comment.content|linebreaks }}</p>
+
+              {% endfor %}
               </div>
             </div>
       </div>

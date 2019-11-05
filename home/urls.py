@@ -7,6 +7,6 @@ app_name = 'home'
 urlpatterns = [
 
 
-    url(r'^home/$', home_view, name='home'),
+    url(r'', home_view, name='home'),
 
 ]

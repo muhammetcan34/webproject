@@ -1,9 +1,10 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, HttpResponseRedirect, redirect, Http404
 from .models import postt
-from .forms import PostForm
+from .forms import PostForm, commentform
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+
 
 
 def post_index(request):
@@ -31,17 +32,25 @@ def post_index(request):
             # If page is out of range (e.g. 9999), deliver last page of results.
             posts = paginator.page(paginator.num_pages)
 
-       
+
 
     return render(request, 'post/index.html', {'posts': post_list})
 
 def post_detail(request, id):
     post = get_object_or_404(postt, id=id)
+
+    form = commentform(request.POST or None)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.post = post
+        comment.save()
+        return HttpResponseRedirect(postt.get_absolut())
+
     context = {
         'post': post,
+        'form': form,
 
     }
-
     return render(request, 'post/detail.html', context)
 
 
@@ -93,5 +102,5 @@ def post_delete(request, id):
     messages.success(request,  f"postunuz başarıyla silindi ")
     return redirect('post:index')
 
-    return HttpResponse('burasi post delete sayfasi')
+    return HttpResponse('burasi post delete sayfası')
 

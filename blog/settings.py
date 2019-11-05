@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'postt',
+    'home',
     'crispy_forms',
     'ckeditor',
     'django_cleanup'

@@ -30,13 +30,12 @@ class postt(models.Model):
         ordering = ['publishing_date']
 
 class comment(models.Model):
-    postt = models.ForeignKey('postt.postt', related_name='comments', on_delete=models.CASCADE)
+    post = models.ForeignKey('postt.postt', related_name='comments', on_delete=models.CASCADE)
 
     name = models.CharField(max_length=200, verbose_name='isim')
     content = models.TextField(verbose_name='yorum')
 
     created_date = models.DateTimeField(auto_now_add=True)
-
 
 
 

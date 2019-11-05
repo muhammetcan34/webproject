@@ -1,4 +1,6 @@
 from django.conf.urls import url
+
+from home.views import home_view
 from.views import *
 
 app_name = 'post'

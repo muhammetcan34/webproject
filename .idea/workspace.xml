@@ -2,24 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="151430a5-7924-4e18-9211-c739c88e9372" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/accounts/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webproject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webproject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/post/comment.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/bin/sqlformat" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/bin/sqlformat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postt/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/postt/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postt/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/postt/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postt/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/postt/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postt/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/postt/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/post/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/post/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/post/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,8 +47,8 @@
       <list>
         <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -187,7 +180,7 @@
       <workItem from="1571833757456" duration="38422000" />
       <workItem from="1571986504060" duration="19406000" />
       <workItem from="1572432729008" duration="7050000" />
-      <workItem from="1572520110093" duration="22651000" />
+      <workItem from="1572520110093" duration="44007000" />
     </task>
     <servers />
   </component>
@@ -214,11 +207,6 @@
           <url>file://$PROJECT_DIR$/templates/accounts/form.html</url>
           <line>4</line>
           <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/accounts/views.py</url>
-          <line>13</line>
-          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
