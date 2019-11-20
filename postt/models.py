@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from django.conf import settings
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 from django import forms
 from django.db import models
@@ -29,15 +31,13 @@ class postt(models.Model):
     class Meta:
         ordering = ['publishing_date']
 
+
 class comment(models.Model):
     post = models.ForeignKey('postt.postt', related_name='comments', on_delete=models.CASCADE)
 
     name = models.CharField(max_length=200, verbose_name='isim')
     content = models.TextField(verbose_name='yorum')
-
+    reply = models.ForeignKey(null=True, on_delete=models.CASCADE, related_name='replies', to='postt.comment')
+    replys = models.ForeignKey(null=True, on_delete=models.CASCADE, related_name='replies2',  to='postt.comment')
     created_date = models.DateTimeField(auto_now_add=True)
-
-
-
-
-        #return reverse('detail', kwargs=('id':self))
+    # return reverse('detail', kwargs=('id':self))

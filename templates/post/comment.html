@@ -1,10 +1,9 @@
 {% load crispy_forms_tags %}
 
-<form method="post" >
-
-
+<form method="post">
     {% csrf_token %}
     {{ form|crispy }}
     <input type="submit" class="btn btn-primary" value="yorum ekle">
-
+    <input type="hidden" name="reply_id" value="{{ reply_id }}">
+    <input type="hidden" name="replys_id" value="{{ replys_id }}">
 </form>

@@ -1,9 +1,11 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, HttpResponseRedirect, redirect, Http404
-from .models import postt
+from .models import postt, comment
 from .forms import PostForm, commentform
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from datetime import datetime
+
 
 
 
@@ -39,18 +41,26 @@ def post_index(request):
 def post_detail(request, id):
     post = get_object_or_404(postt, id=id)
 
+
+
+
     form = commentform(request.POST or None)
     if form.is_valid():
-        comment = form.save(commit=False)
-        comment.post = post
-        comment.save()
-        return HttpResponseRedirect(postt.get_absolut())
+        form_comment = form.save(commit=False)
+        form_comment.reply = comment.objects.get(id=form.data.get("reply_id", None))
+        form_comment.reply2 = comment.objects.get(id=form.data.get("reply2_id", None))
+        form_comment.post = post
+        form_comment.save()
+
+
+        return HttpResponseRedirect("/post/{}/detail".format(post.id))
 
     context = {
         'post': post,
         'form': form,
 
     }
+
     return render(request, 'post/detail.html', context)
 
 
@@ -78,6 +88,7 @@ def post_create(request):
 
 
     return render(request, 'post/form.html', context)
+
 
 
 def post_update(request, id):

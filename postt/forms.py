@@ -13,10 +13,13 @@ class PostForm(forms.ModelForm):
         ]
 
 class commentform(forms.ModelForm):
+    content = forms.CharField(label="", widget=forms.Textarea)
     class Meta:
         model = comment
         fields = [
             'name',
             'content',
         ]
+
+
 

@@ -1,40 +1,99 @@
 {% extends 'base.html' %}
 
-{% block body  %}
+{% block body %}
 
 
 
-      <div class="container">
-            <div class="row">
-              <div class=" col-md-6 col-md-offset-3">
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-6 col-md-offset-3">
                 <div class="thumbnail">
-                  <div class="caption">
-                     {% if post.image %}
-                        <img src="{{ post.image.url }}" class="img-responsive">
+                    <div class="caption">
+                        {% if post.image %}
+                            <img src="{{ post.image.url }}" class="img-responsive">
 
-                      {% endif %}
-                    <h3> {{ post.title }} <small>  {{ post.publishing_date| timesince }}prior to</small> </h3>
-                    <h4>Yazar: {{ post.user.get_full_name }}</h4>
-                    <p>{{ post.content|safe|linebreaks|truncatechars:100}}</p>
-                              {% if request.user.is_authenticated %}
-                                <a href="{% url 'post:update' id=post.id %}" class="btn btn-default" role="button">güncelle</a>
-                                <a href="{% url 'post:delete' id=post.id %}" class="btn btn-danger" role="button">sil</a>
-                              {% endif %}
-                  </div>
+                        {% endif %}
+                        <h3> {{ post.title }} <small>  {{ post.publishing_date| timesince }}prior to</small></h3>
+                        <h4>Yazar: {{ post.user.get_full_name }}</h4>
+                        <p>{{ post.content|safe|linebreaks|truncatechars:100 }}</p>
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'post:update' id=post.id %}" class="btn btn-default"
+                               role="button">güncelle</a>
+                            <a href="{% url 'post:delete' id=post.id %}" class="btn btn-danger" role="button">sil</a>
+                        {% endif %}
+                    </div>
                 </div>
-              <br><br><hr>
-              <h3>yorum ekle:</h3>
-              {% include 'post/comment.html' %}
-              <hr>
+                <br><br>
+                <hr>
+                <h3>yorum ekle:</h3>
+                {% include 'post/comment.html' %}
+                <hr>
+                {% for comment in post.comments.all %}
+                    <div class="comments">
+                    {% if not comment.reply_id %}
+                        <div class="comment">
+                            <h4>{{ comment.name }} | <small>{{ comment.created_date|timesince }} önce</small></h4>
+                            <p>{{ comment.content|linebreaks }}</p>
 
-              {% for comment in post.comments.all  %}
+                            {% for reply in comment.replies.all %}
 
-                  <h4>{{ comment.name }} | <small>{{ comment.created_date|timesince }} önce</small></h4>
-                  <p>{{ comment.content|linebreaks }}</p>
+                                <li>
+                                    Kişi: {{ reply.name }} Cevap: {{ reply.content }}
+                                </li>
 
-              {% endfor %}
-              </div>
+
+                            {% endfor %}
+                        </div>
+                        <br><br>
+
+                        <div style="display: none;" class="answer" id="myDIV-{{ comment.id }}">
+                            <h3>cevap ekle:</h3>
+
+                            {% include 'post/comment.html' with reply_id=comment.id %}
+
+
+                        </div>
+
+                        <br><br>
+                        <button onclick="myFunction('myDIV-{{ comment.id }}')">cevap yaz</button>
+                        <hr>
+
+
+
+
+
+
+                    {% endif %}
+
+
+
+                {% endfor %}
+                <script>
+
+                    function myFunction(div_id) {
+                        var x = document.getElementById(div_id);
+                        var comments = document.querySelectorAll(".comments");
+                        comments.forEach(function (comment) {
+                            var answer = comment.querySelector(".answer");
+                            if (answer.id != div_id) {
+                                answer.style.display = 'none';
+                            } else {
+                                answer.style.display = 'block';
+                            }
+
+
+                        });
+
+
+                    }
+
+
+                </script>
+
+
+                </div>
             </div>
-      </div>
+        </div>
+    </div>
 
 {% endblock %}
